@@ -1,0 +1,1306 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf600
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red132\green132\blue132;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c58824\c58824\c58824;}
+\margl1440\margr1440\vieww28600\viewh18000\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs29\fsmilli14667 \cf0 \expnd0\expndtw0\kerning0
+\'a0
+\fs24 \
+
+\fs29\fsmilli14667 \'a0
+\fs24 \
+\pard\pardeftab720\partightenfactor0
+
+\fs53\fsmilli26667 \cf0 Unlimited String Array - VBA\
+\
+\pard\pardeftab720\partightenfactor0
+
+\fs24 \cf0 Copy the code below into an Excel VBA module.\
+\
+The module is very useful for flattening excel columns among other utilities.  \
+I will try to add more complete instructions soon Warren Deferbrache 8/27/18\
+\
+\
+\
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trwWidth27360\trftsWidth3 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth20\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl0 \clpadr0 \gaph\cellx2160
+\clvertalt \clshdrawnil \clwWidth12676\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl0 \clpadr0 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth4113\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl0 \clpadr0 \gaph\cellx6480
+\clvertalt \clshdrawnil \clwWidth10549\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl0 \clpadr0 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trwWidth27360\trftsWidth3 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth20\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl0 \clpadr0 \gaph\cellx2160
+\clvertalt \clshdrawnil \clwWidth12676\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl0 \clpadr0 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth4113\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl0 \clpadr0 \gaph\cellx6480
+\clvmgf \clvertalt \clshdrawnil \clwWidth10549\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl0 \clpadr0 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\fs2\fsmilli1333 \cf0 \'a0
+\fs24 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\fs29\fsmilli14667 \cf0  
+\fs24 \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trwWidth27360\trftsWidth3 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth20\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl0 \clpadr0 \gaph\cellx2160
+\clvmgf \clvertalt \clshdrawnil \clwWidth12676\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl0 \clpadr0 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth4113\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl0 \clpadr0 \gaph\cellx6480
+\clvmrg \clvertalt \clshdrawnil \clwWidth10549\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl0 \clpadr0 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\fs2\fsmilli1333 \cf0 \'a0
+\fs24 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\fs29\fsmilli14667 \cf0 Public Type ULStrArr
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Arr() As String\'a0 'Unlimited number of riders are supported but arr(0) is always the key
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 ptr As Long\'a0 'Current upper limit of the array
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 ColCnt As Long 'current number of columns per row zero based
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 KeyWidth As Long 'Number of columns to include in the key, key columns must be the first ones in the row
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 MaxRows As Long ' number of rows supported in the string array.\'a0 Change MAX_ROWS to set more or less
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 isInit As Boolean 'set to true if initialized
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 SearchArr(10) As String 'Use for searching functions
+\fs24 \
+
+\fs29\fsmilli14667 End Type
+\fs24 \
+
+\fs29\fsmilli14667 \'a0
+\fs24 \
+
+\fs29\fsmilli14667 '*****Unlimited String array\'a0 ***************************************************
+\fs24 \
+
+\fs29\fsmilli14667 '************************************************************************************
+\fs24 \
+
+\fs29\fsmilli14667 Public Function ULStrArr_IsInArr(StrsToFind() As String, Arr As ULStrArr) As Boolean
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 ULStrArr_IsInArr = False
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 RetVal = UlStrArr_Find(StrsToFind, Arr)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 If RetVal > -1 Then
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 ULStrArr_IsInArr = True
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 End If
+\fs24 \
+
+\fs29\fsmilli14667 End Function
+\fs24 \
+
+\fs29\fsmilli14667 Public Function UlStrArr_FindIndex(KeytoFind() As String, Arr As ULStrArr) As Long
+\fs24 \
+
+\fs29\fsmilli14667 'Finds strings based on a passed in index housed in KeytoFind .\'a0 Uses all search arguments in key to find, blanks are left out of the search,
+\fs24 \
+
+\fs29\fsmilli14667 'KeytoFind must be at least a large as arr's column setting
+\fs24 \
+
+\fs29\fsmilli14667 \'a0 Dim CmpStr As String
+\fs24 \
+
+\fs29\fsmilli14667 \'a0 Dim SearchStr As String
+\fs24 \
+
+\fs29\fsmilli14667 \'a0 Dim i As Long
+\fs24 \
+
+\fs29\fsmilli14667 \'a0
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0SearchStr = ""
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 For z = 0 To Arr.ColCnt
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0 If KeytoFind(z) <> "" Then
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 SearchStr = SearchStr + KeytoFind(z)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0 End If
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Next
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 UlStrArr_FindIndex = -1
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 For i = 0 To Arr.ptr
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 CmpStr = ""
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 For z = 0 To Arr.ColCnt
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 If KeytoFind(z) <> "" Then
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 CmpStr = CmpStr + Arr.Arr(z, i)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 End If
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 Next
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 If CmpStr = SearchStr Then
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 UlStrArr_FindIndex = i
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 Exit Function
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0 \'a0\'a0End If
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Next
+\fs24 \
+
+\fs29\fsmilli14667 End Function
+\fs24 \
+
+\fs29\fsmilli14667 Public Function UlStrArr_FindAllIndex(KeytoFind() As String, Arr As ULStrArr, Optional CaseSensitive As Boolean = False) As Long()
+\fs24 \
+
+\fs29\fsmilli14667 'Finds all strings based on a passed in index housed in KeytoFind .\'a0 Uses all search arguments in key to find, blanks are left out of the search,
+\fs24 \
+
+\fs29\fsmilli14667 'KeytoFind must be at least a large as arr's column setting
+\fs24 \
+
+\fs29\fsmilli14667 'Not case sensitive
+\fs24 \
+
+\fs29\fsmilli14667 \'a0 Dim CmpStr As String
+\fs24 \
+
+\fs29\fsmilli14667 \'a0 Dim SearchStr As String
+\fs24 \
+
+\fs29\fsmilli14667 \'a0 Dim i As Long
+\fs24 \
+
+\fs29\fsmilli14667 \'a0 Dim RetArr() As Long
+\fs24 \
+
+\fs29\fsmilli14667 \'a0 Dim FndArr(1000) As Long
+\fs24 \
+
+\fs29\fsmilli14667 \'a0 Dim FndArrPtr As Long
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0SearchStr = ""
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 FndArrPtr = -1
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 For z = 0 To Arr.ColCnt 'Build search string
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0 If KeytoFind(z) <> "" Then
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 SearchStr = SearchStr + KeytoFind(z)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0 End If
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Next
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 If CaseSensitive = False Then
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 SearchStr = Trim(UCase(SearchStr))
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 End If
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 For i = 0 To Arr.ptr
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 CmpStr = ""
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 For z = 0 To Arr.ColCnt
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 If KeytoFind(z) <> "" Then
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 CmpStr = CmpStr + Arr.Arr(z, i)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 End If
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 Next
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 If CaseSensitive = False Then
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 CmpStr = Trim(UCase(CmpStr))
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 End If
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 If CmpStr = SearchStr Then
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 FndArrPtr = FndArrPtr + 1
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 FndArr(FndArrPtr) = i
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 End If
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Next
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 If FndArrPtr <> -1 Then
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 ReDim RetArr(FndArrPtr)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 For i = 0 To FndArrPtr
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 RetArr(i) = FndArr(i)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 Next
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Else
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 ReDim RetArr(0)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 RetArr(0) = -1
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 End If
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 UlStrArr_FindAllIndex = RetArr
+\fs24 \
+
+\fs29\fsmilli14667 End Function
+\fs24 \
+
+\fs29\fsmilli14667 Public Function UlStrArr_Find(KeytoFind() As String, Arr As ULStrArr) As Long
+\fs24 \
+
+\fs29\fsmilli14667 'StrsToFind must be as large as arr.KeyWidth or larger or an out of bounds error will occure
+\fs24 \
+
+\fs29\fsmilli14667 \'a0 Dim CmpStr As String
+\fs24 \
+
+\fs29\fsmilli14667 \'a0 Dim SearchStr As String
+\fs24 \
+
+\fs29\fsmilli14667 \'a0 Dim i As Long
+\fs24 \
+
+\fs29\fsmilli14667 \'a0
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0SearchStr = ""
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 For z = 0 To Arr.KeyWidth
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0 SearchStr = SearchStr + KeytoFind(z)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Next
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 UlStrArr_Find = -1
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 For i = 0 To Arr.ptr
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 CmpStr = ULStrArr_KeyStr(i, Arr)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 If CmpStr = SearchStr Then
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 UlStrArr_Find = i
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 Exit Function
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 End If
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Next
+\fs24 \
+
+\fs29\fsmilli14667 End Function
+\fs24 \
+
+\fs29\fsmilli14667 \'a0
+\fs24 \
+
+\fs29\fsmilli14667 Public Sub ULStrArr_AddRow(StrsToAdd() As String, Arr As ULStrArr)
+\fs24 \
+
+\fs29\fsmilli14667 'Adds a string to the string array with no validation
+\fs24 \
+
+\fs29\fsmilli14667 'RiderCols must have Arr.ColCnt or more rows or an out of bounds error will occure
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Arr.ptr = Arr.ptr + 1
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 If Arr.ptr > Arr.MaxRows Then
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 Call ULStrarr_Redim(1, Arr)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 End If
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 If Len(StrsToAdd(0)) > 0 Then
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 For i = 0 To Arr.ColCnt
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 Arr.Arr(i, Arr.ptr) = StrsToAdd(i)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 Next
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 End If
+\fs24 \
+
+\fs29\fsmilli14667 End Sub
+\fs24 \
+
+\fs29\fsmilli14667 Public Sub ULStrArr_AddUniqueString(StrsToAdd() As String, Arr As ULStrArr)
+\fs24 \
+
+\fs29\fsmilli14667 'Add a string to the string array if it is not blank and is not in there already
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 If StrsToAdd(0) <> "" And ULStrArr_IsInArr(StrsToAdd, Arr) = False Then 'Don't add empty strings or existing strings
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 Call ULStrArr_AddRow(StrsToAdd, Arr)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 End If
+\fs24 \
+
+\fs29\fsmilli14667 End Sub
+\fs24 \
+
+\fs29\fsmilli14667 Public Sub ULStrarr_Redim(RowsToAdd As Integer, Arr As ULStrArr)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 'adds the specified number of rows to the array
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Arr.MaxRows = Arr.MaxRows + RowsToAdd
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 ReDim Preserve Arr.Arr(Arr.ColCnt, Arr.MaxRows)
+\fs24 \
+
+\fs29\fsmilli14667 End Sub
+\fs24 \
+
+\fs29\fsmilli14667 Sub testRedim()
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Dim sArr As ULStrArr
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0Call ULStrArr_Initialize(1, 6, 2, sArr)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Call ULStrarr_Redim(2, sArr)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0
+\fs24 \
+
+\fs29\fsmilli14667 End Sub
+\fs24 \
+
+\fs29\fsmilli14667 \'a0
+\fs24 \
+
+\fs29\fsmilli14667 Public Sub ULStrArr_Initialize(MaxRows As Long, nColumns As Long, KeyWidth As Long, Arr As ULStrArr)
+\fs24 \
+
+\fs29\fsmilli14667 'nColumns = number of columns including the key column so must be >= 0
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 If MaxRows < 1 Then
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 MaxRows = 1 'Protects the redim from failing if MaxRows too small
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 End If
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 If nColumns < 1 Then
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 nColumns = 1
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 End If
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 \'a0\'a0\'a0\'a0If KeyWidth < 1 Then
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 KeyWidth = 1
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 End If
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 ReDim Arr.Arr(nColumns - 1, MaxRows - 1)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 Arr.MaxRows = MaxRows - 1
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 Arr.ColCnt = nColumns - 1 'Handle the 0 based here to avoid it in every function
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 Arr.KeyWidth = KeyWidth - 1
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 Arr.ptr = -1
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 Arr.isInit = True
+\fs24 \
+
+\fs29\fsmilli14667 End Sub
+\fs24 \
+
+\fs29\fsmilli14667 Public Sub ULStrArrOutputToRange(rngName As String, Arr As ULStrArr)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 'Writes the array out to an Excel range object
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Dim r As Range
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0RowOffset = 1
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Set r = Range(rngName)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Call DeleteTableRows(rngName)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 For i = 0 To Arr.ptr
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 For y = 0 To Arr.ColCnt
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 r.Cells(i + RowOffset, y + 1) = Arr.Arr(y, i)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 Next
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Next
+\fs24 \
+
+\fs29\fsmilli14667 End Sub
+\fs24 \
+
+\fs29\fsmilli14667 \'a0
+\fs24 \
+
+\fs29\fsmilli14667 Public Function ULStrArr_KeyStr(ArrRow As Long, Arr As ULStrArr) As String
+\fs24 \
+
+\fs29\fsmilli14667 \'a0 'returns the key as a concatenated string string
+\fs24 \
+
+\fs29\fsmilli14667 \'a0 Dim s As String
+\fs24 \
+
+\fs29\fsmilli14667 \'a0
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0s = ""
+\fs24 \
+
+\fs29\fsmilli14667 \'a0 For i = 0 To Arr.KeyWidth
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 s = s + Arr.Arr(i, ArrRow)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0 Next
+\fs24 \
+
+\fs29\fsmilli14667 \'a0 ULStrArr_KeyStr = s
+\fs24 \
+
+\fs29\fsmilli14667 End Function
+\fs24 \
+
+\fs29\fsmilli14667 Public Sub ULStrArr_CopyRow(rowToCopy As Long, theRow() As String, Arr As ULStrArr)
+\fs24 \
+
+\fs29\fsmilli14667 'Copies the indicated row to an array of strings, theRow array is redimensioned to the number of columns in the StrArr
+\fs24 \
+
+\fs29\fsmilli14667 Dim i As Long
+\fs24 \
+
+\fs29\fsmilli14667 \'a0 ReDim theRow(Arr.ColCnt)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0 For i = 0 To Arr.ColCnt
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 theRow(i) = Arr.Arr(i, rowToCopy)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0 Next
+\fs24 \
+
+\fs29\fsmilli14667 End Sub
+\fs24 \
+
+\fs29\fsmilli14667 Public Sub ULStrArr_AddULArrRowToULArr(RowId As Long, SrcArr As ULStrArr, TrgArr As ULStrArr)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 'adds the indicated row in SrcArr to TrgArr.\'a0 Assumes TrgArr has been initialized
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Dim RowArr() As String
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Call ULStrArr_CopyRow(RowId, RowArr, SrcArr)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Call ULStrArr_AddRow(RowArr, TrgArr)
+\fs24 \
+
+\fs29\fsmilli14667 End Sub
+\fs24 \
+
+\fs29\fsmilli14667 Public Sub ULStrArr_DupArr(SrcArr As ULStrArr, TrgArr As ULStrArr)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Dim i As Long
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Call ULStrArr_Initialize(SrcArr.ptr + 1, SrcArr.ColCnt + 1, SrcArr.KeyWidth + 1, TrgArr)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 For i = 0 To SrcArr.ptr
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 Call ULStrArr_AddULArrRowToULArr(i, SrcArr, TrgArr)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Next
+\fs24 \
+
+\fs29\fsmilli14667 End Sub
+\fs24 \
+
+\fs29\fsmilli14667 Public Sub ULStrArr_BubbleSort(Arr As ULStrArr)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Dim strTemp() As String
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Dim CmpStr As String
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Dim CmpToStr As String
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Dim i As Long
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Dim j As Long
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0ReDim strTemp(Arr.ColCnt)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 For i = Arr.ptr To 1 Step -1
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 For j = 1 To i
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 CmpStr = UCase(ULStrArr_KeyStr(j - 1, Arr))
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 CmpToStr = UCase(ULStrArr_KeyStr(j, Arr))
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 If CmpStr > CmpToStr Then
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 Call ULStrArr_CopyRow(j - 1, strTemp, Arr)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 For a = 0 To Arr.ColCnt
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 Arr.Arr(a, j - 1) = Arr.Arr(a, j)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 Arr.Arr(a, j) = strTemp(a)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 Next
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 End If
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 Next j
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Next i
+\fs24 \
+
+\fs29\fsmilli14667 End Sub
+\fs24 \
+
+\fs29\fsmilli14667 Public Sub ULStrArr_GetRow(RowNum As Long, RowArr() As String, Arr As ULStrArr)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 If RowNum < Arr.ptr And RowNum >= 0 Then
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0 For i = 0 To Arr.ColCnt
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 RowArr(i) = Arr.Arr(i, RowNum)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0 Next
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0 Else
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 RowArr(0) = "ULStrArr - Pointer Out of bounds error"
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 End If
+\fs24 \
+
+\fs29\fsmilli14667 End Sub
+\fs24 \
+
+\fs29\fsmilli14667 Public Sub ULStrArr_LoadExcelRange(r As Range, Arr As ULStrArr)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 'Only works with excel, comment out in other applications
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 'Initializes ULAtrArr arr to the size of the range and loads all rows from the range into arr
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Dim s() As String
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0ReDim s(r.Columns.Count)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Call ULStrArr_Initialize(r.Rows.Count, r.Columns.Count, 1, Arr)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 For i = 1 To r.Rows.Count
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 For y = 1 To r.Columns.Count
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 s(y - 1) = r(i, y).Value
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 Next
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 If Len(s(0)) > 0 Then 'make sure there is something to save
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 Call ULStrArr_AddRow(s, Arr)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 End If
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Next
+\fs24 \
+
+\fs29\fsmilli14667 End Sub
+\fs24 \
+
+\fs29\fsmilli14667 Public Sub ULStrArr_AppendExcelRange(r As Range, Arr As ULStrArr)
+\fs24 \
+
+\fs29\fsmilli14667 'Appends the contents of the range to the passed in ulstrarr.\'a0 The existing data is preserved.
+\fs24 \
+
+\fs29\fsmilli14667 'Note: will error if the passed in range is wider than the number of columns in ULStrArr
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Dim s As ULStrArr
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Dim i As Long
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Call ULStrArr_LoadExcelRange(r, s)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 If Arr.isInit = False Then
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 Call ULStrArr_Initialize(s.ptr, s.ColCnt + 1, s.KeyWidth + 1, Arr)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 End If
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 For i = 0 To s.ptr
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 Call ULStrArr_AddULArrRowToULArr(i, s, Arr)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Next
+\fs24 \
+
+\fs29\fsmilli14667 End Sub
+\fs24 \
+
+\fs29\fsmilli14667 Public Sub ULStrArr_LoadExcelRangeByVal(r As Range, Col As Long, SrchVal As String, Arr As ULStrArr)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 'Loads range r from an excel sheet to a ULStrArr arr when the value in the passed in column matches srchVal (case sensitive currently)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 'Col is 0 based so 1 less than the 1 based range columns
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 'Only works with excel, comment out in other applications
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Dim s() As String
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0ReDim s(r.Columns.Count)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Call ULStrArr_Initialize(r.Rows.Count, r.Columns.Count, 1, Arr)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 For i = 1 To r.Rows.Count
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 For y = 1 To r.Columns.Count
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 s(y - 1) = r(i, y).Value
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 Next
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0 \'a0If s(Col) = SrchVal Then
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 Call ULStrArr_AddRow(s, Arr)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 End If
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Next
+\fs24 \
+
+\fs29\fsmilli14667 End Sub
+\fs24 \
+
+\fs29\fsmilli14667 Public Sub ULStrArr_SubsetFromUL(inArr As ULStrArr, Col As Long, srchValArr As strArr, OutArr As ULStrArr)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 'Searches inArr for a value and outputs matching rows to outArr, outArr is reinitialized to the same size as inArr
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Dim sArr() As String
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0Call ULStrArr_Initialize(inArr.MaxRows + 1, inArr.ColCnt + 1, inArr.KeyWidth + 1, OutArr)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 For i = 0 To inArr.ptr
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 For y = 0 To srchValArr.ptr
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 If UCase(Trim(inArr.Arr(Col, i))) = UCase(Trim(srchValArr.Arr(y))) Then
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 Set sArr = inArr.Arr(i)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 Call ULStrArr_AddRow(sArr, OutArr)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 End If
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 Next
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Next
+\fs24 \
+
+\fs29\fsmilli14667 End Sub
+\fs24 \
+
+\fs29\fsmilli14667 Public Sub ULStrArr_MergeArrs(SrchForArr As ULStrArr, SrchArr As ULStrArr, SrchForCol As Long, SrchCol As Long, cpyCol As Long, TrgArr As ULStrArr)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 'Creates a new 2 field ULStrArr (TrgArr) where the records contain the critCol and cpycol values when CritCol values in both arrays match
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Dim s(1) As String
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Call ULStrArr_Initialize(SrchArr.ptr + 1, 2, 2, TrgArr)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 For i = 0 To SrchForArr.ptr
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 For y = 0 To SrchArr.ptr
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 If UCase(Trim(SrchArr.Arr(SrchCol, y))) = UCase(Trim(SrchForArr.Arr(SrchForCol, i))) Then
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0s(0) = SrchForArr.Arr(SrchForColi)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 s(1) = SrchArr.Arr(cpyCol, y)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 Call ULStrArr_AddRow(s, TrgArr)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 End If
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 Next
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Next
+\fs24 \
+
+\fs29\fsmilli14667 End Sub
+\fs24 \
+
+\fs29\fsmilli14667 Public Sub ULStrArr_Collapse(IsKey() As Boolean, Arr As ULStrArr)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 'Looks for duplicates of the columns where is key is true, collapses the other columns to comma delimited strings when the keys match (ie duplicates are found)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Dim WkArr As ULStrArr
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Dim OutLn() As String
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Dim SearchStr, findStr As String
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0 \'a0
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0ReDim OutLn(Arr.ColCnt + 1)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Call ULStrArr_Initialize(Arr.ptr + 1, Arr.ColCnt + 1, Arr.ColCnt + 1, WkArr)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0For i = 0 To Arr.ptr
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 Found = False
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 SearchStr = ""
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 For y = 0 To Arr.ColCnt
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 If IsKey(y) = True Then
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 SearchStr = SearchStr + Arr.Arr(y, i)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 End If
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 OutLn(y) = Arr.Arr(y, i)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 Next
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 For zx = 0 To WkArr.ptr
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 findStr = ""
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 For zy = 0 To Arr.ColCnt
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 If IsKey(zy) = True Then
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 findStr = findStr + WkArr.Arr(zy, zx)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 End If
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 Next
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 If Trim(UCase(SearchStr)) = Trim(UCase(findStr)) Then
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 Found = True
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 For nn = 0 To WkArr.ColCnt
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 If IsKey(nn) = False And InStr(1, WkArr.Arr(nn, zy), Arr.Arr(nn, i)) = 0 Then 'We only need to extend the strings that are being collapsed
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 WkArr.Arr(nn, zy) = WkArr.Arr(nn, zy) + "," + Arr.Arr(nn, i)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0End If
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 Next
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 End If
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 Next
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 If Found = False Then
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 Call ULStrArr_AddRow(OutLn, WkArr)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 End If
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Next
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Call ULStrArr_Initialize(WkArr.ptr + 1, WkArr.ColCnt + 1, WkArr.ColCnt + 1, Arr)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 For i = 0 To WkArr.ptr
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 For y = 0 To WkArr.ColCnt
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 OutLn(y) = WkArr.Arr(y, i)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 Next
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 Call ULStrArr_AddRow(OutLn, Arr)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Next
+\fs24 \
+
+\fs29\fsmilli14667 End Sub
+\fs24 \
+
+\fs29\fsmilli14667 Public Sub ULStrArr_DeDupe(IsKey() As Boolean, Arr As ULStrArr)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 'Looks for duplicates of the columns where is key is true, duplicates based on IsKey(x) = True are removed
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Dim WkArr As ULStrArr
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Dim OutLn() As String
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Dim SearchStr, findStr As String
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0ReDim OutLn(Arr.ColCnt + 1)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Call ULStrArr_Initialize(Arr.ptr + 1, Arr.ColCnt + 1, Arr.ColCnt + 1, WkArr)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0For i = 0 To Arr.ptr
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 Found = False
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 SearchStr = ""
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 For y = 0 To Arr.ColCnt
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 If IsKey(y) = True Then
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 SearchStr = SearchStr + Arr.Arr(y, i)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0End If
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 OutLn(y) = Arr.Arr(y, i)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 Next
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 For zy = 0 To WkArr.ptr
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 findStr = ""
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 For zx = 0 To Arr.ColCnt
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 If IsKey(zx) = True Then
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 findStr = findStr + WkArr.Arr(zy, zx)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 End If
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 Next
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 If Trim(UCase(SearchStr)) = Trim(UCase(findStr)) Then
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 Found = True
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 End If
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 Next
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 If Found = False Then
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 Call ULStrArr_AddRow(OutLn, WkArr)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0 \'a0End If
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Next
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Call ULStrArr_Initialize(WkArr.ptr + 1, WkArr.ColCnt + 1, WkArr.ColCnt + 1, Arr)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 For i = 0 To WkArr.ptr
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 For y = 0 To WkArr.ColCnt
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 OutLn(y) = WkArr.Arr(y, i)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 Next
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 Call ULStrArr_AddRow(OutLn, Arr)
+\fs24 \
+
+\fs29\fsmilli14667 \'a0\'a0\'a0 Next
+\fs24 \
+
+\fs29\fsmilli14667 End Sub
+\fs24 \
+
+\fs29\fsmilli14667 \'a0
+\fs24 \
+
+\fs29\fsmilli14667 \'a0
+\fs24 \
+
+\fs29\fsmilli14667 \'a0
+\fs24 \
+
+\fs29\fsmilli14667 \'a0
+\fs24 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 \cell 
+\pard\intbl\itap1\cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trwWidth27360\trftsWidth3 \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth20\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl0 \clpadr0 \gaph\cellx2160
+\clvmrg \clvertalt \clshdrawnil \clwWidth12676\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl0 \clpadr0 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth4113\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl0 \clpadr0 \gaph\cellx6480
+\clvertalt \clshdrawnil \clwWidth10549\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl0 \clpadr0 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\fs2\fsmilli1333 \cf0 \'a0
+\fs24 \cell 
+\pard\intbl\itap1\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 \cell \lastrow\row
+\pard\pardeftab720\partightenfactor0
+
+\fs29\fsmilli14667 \cf0 \'a0
+\fs24 \
+\pard\pardeftab720\partightenfactor0
+\cf3 Created with Microsoft OneNote 2016.}
